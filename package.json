@@ -1,38 +1,28 @@
 {
-  "name": "oras-pull",
-  "version": "0.1.4",
+  "name": "oras-pull-web",
+  "version": "0.0.1",
   "description": "ORAS pull for ghcr.io",
   "scripts": {
-    "test": "tsc && npm run pull",
-    "pull": "node build/cli.js ghcr.io/larshp/oras-test/oras-test:latest",
-    "publish:dryrun": "npm publish --dry-run",
-    "publish:minor": "npm --no-git-tag-version version minor && rm -rf build && npm install && npm test && npm publish --access public",
-    "publish:patch": "npm --no-git-tag-version version patch && rm -rf build && npm install && npm test && npm publish --access public"
-  },
-  "bin": {
-    "oras-pull": "./oras-pull"
+    "build": "tsc && sed -i \"s|YOUR_PAT|$GITHUB_TOKEN|g\" ./build/oras-pull.js",
+    "serve": "python -m http.server 8080"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/heliconialabs/oras-pull.git"
+    "url": "git+https://github.com/mikaello/oras-pull-web.git"
   },
   "keywords": [
     "ORAS",
     "OCI"
   ],
-  "author": "Lars Hvam Petersen",
+  "author": "mikaello",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/heliconialabs/oras-pull/issues"
+    "url": "https://github.com/mikaello/oras-pull-web/issues"
   },
-  "homepage": "https://github.com/heliconialabs/oras-pull#readme",
+  "homepage": "https://github.com/mikaello/oras-pull-web#readme",
   "devDependencies": {
-    "@types/node": "^18.11.18",
-    "@types/tar": "^6.1.3",
+    "@types/web": "^0.0.89",
     "typescript": "^4.9.4"
   },
-  "dependencies": {
-    "cross-fetch": "^3.1.5",
-    "tar": "^6.1.13"
-  }
+  "dependencies": {}
 }
