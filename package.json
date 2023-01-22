@@ -2,6 +2,7 @@
   "name": "oras-pull-web",
   "version": "0.0.1",
   "description": "ORAS pull for ghcr.io",
+  "type": "module",
   "scripts": {
     "build": "tsc && sed -i \"s|YOUR_PAT|$GITHUB_TOKEN|g\" ./build/oras-pull.js",
     "serve": "python -m http.server 8080"
